@@ -8,7 +8,15 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      fonts: {
+        custom: ["Satoshi", "sans-serif"],
+      },
+      fontWeight: {
+        regular: 400,
+        medium: 600,
+      },
+    },
   },
   plugins: [
     flowbite.plugin(),
