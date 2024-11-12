@@ -59,7 +59,7 @@ function Header() {
               <FiSearch className="cursor-pointer text-white" />
             </div>
 
-            {/* Navigation Links */}
+            
             <div>
               <Link to="/hosting" className="block rounded-lg py-2">
                 Book a Tutor
