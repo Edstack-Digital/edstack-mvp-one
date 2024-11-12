@@ -1,5 +1,6 @@
 import Header from "../components/common/Header";
 import { FiPlayCircle } from "react-icons/fi";
+import Lower from "../components/common/Lower";
 
 function Home() {
   const courses = [
@@ -112,6 +113,7 @@ function Home() {
           </div>
         </div>
       </div>
+      <Lower />
     </>
   );
 }
