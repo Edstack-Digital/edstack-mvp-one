@@ -1,8 +1,13 @@
+import Header from "../components/common/Header"
+import Lower from "../components/common/Lower"
 
 
 function Tutor() {
   return (
-    <div>Tutor</div>
+    <>
+    <Header />
+    <Lower />
+    </>
   )
 }
 

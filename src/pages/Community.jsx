@@ -1,7 +1,10 @@
+import Header from "../components/common/Header"
 
 function Community() {
   return (
-    <div>Community</div>
+    <>
+    <Header />
+    </>
   )
 }
 

@@ -11,7 +11,7 @@ function Lower() {
         <img src="/ed.png" alt="edstack logo" className="h-10 sm:h-10" />
         <div className="flex-col">
           <div>EdStack Digital Ltd.</div>
-          <div>Empowering students to achieve academic excellence</div>
+          <div>Empowering students</div>
         </div>
       </div>
 
