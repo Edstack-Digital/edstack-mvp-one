@@ -61,16 +61,16 @@ function Header() {
 
             
             <div>
-              <Link to="/hosting" className="block rounded-lg py-2">
+              <Link to="/tutor" className="block rounded-lg py-2">
                 Book a Tutor
               </Link>
-              <Link to="/hosting" className="block rounded-lg py-2">
+              <Link to="/mock" className="block rounded-lg py-2">
                 Mock Test
               </Link>
-              <Link to="/hosting" className="block rounded-lg py-2">
+              <Link to="/community" className="block rounded-lg py-2">
                 Community
               </Link>
-              <Link to="/hosting" className="block rounded-lg py-2">
+              <Link to="/blog" className="block rounded-lg py-2">
                 Blog (coming soon)
               </Link>
             </div>
