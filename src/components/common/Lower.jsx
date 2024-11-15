@@ -31,12 +31,12 @@ function Lower() {
 
       <div className="flex-col text-right">
       <Link to="/">
-        <div className=" ">Join Our Community!</div>
+        <div className="underline">Join Our Community!</div>
         </Link>
 
         <Link to='/'>
         
-        <div className=" ">Subscribe to our Newsletter</div>
+        <div className="underline">Subscribe to our Newsletter</div>
         </Link>
       </div>
     </footer>

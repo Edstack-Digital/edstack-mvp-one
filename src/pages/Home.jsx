@@ -42,7 +42,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h2 className="text-center text-lg font-semibold">
+                  <h2 className="text-center text-lg font-[Vastago] ">
                     {course.title}
                   </h2>
                 </div>
@@ -70,7 +70,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h2 className="text-center text-lg font-semibold">
+                  <h2 className="text-center text-lg font-[Vastago">
                     {course.title}
                   </h2>
                 </div>
@@ -92,7 +92,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h2 className="text-center text-lg font-semibold">
+                  <h2 className="text-center text-lg font-[Vastago">
                     {course.title}
                   </h2>
                 </div>
@@ -114,7 +114,7 @@ function Home() {
                   </div>
                 </div>
                 <div className="p-4">
-                  <h2 className="text-center text-lg font-semibold">
+                  <h2 className="text-center text-lg font-[Vastago">
                     {course.title}
                   </h2>
                 </div>

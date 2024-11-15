@@ -10,7 +10,7 @@ export default {
   theme: {
     extend: {
       fonts: {
-        custom: ["Satoshi", "sans-serif"],
+        custom: ["Satoshi", "Vastago", "sans-serif"],
       },
       fontWeight: {
         regular: 400,
