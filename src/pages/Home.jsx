@@ -7,31 +7,32 @@ function Home() {
     {
       id: 1,
       title: "Understanding Geography 101",
-      image: "https://via.placeholder.com/300x200", // Replace with actual image URL
+      image: "/thumbnail.png",
+      
     },
     {
       id: 2,
       title: "Introduction to Biology",
-      image: "https://via.placeholder.com/300x200", // Replace with actual image URL
+      image: "/thumbnail.png",
     },
     {
       id: 3,
       title: "History of Art",
-      image: "https://via.placeholder.com/300x200", // Replace with actual image URL
+      image: "/thumbnail.png", 
     },
   ];
 
   return (
     <>
       <Header />
-      <div className="mt-11 px-4 lg:px-16 font-[Satoshi]">
-        {/* Recommended Courses Section */}
+      <div className="mt-11 px-7 lg:px-16 font-[Satoshi]">
+       
         <div>
           <h1 className="text-xl mb-6">Recommended courses</h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((course) => (
               <div key={course.id} className="bg-gray-100 rounded-lg shadow-md overflow-hidden">
-                {/* Course Image with Play Button Overlay */}
+                
                 <div className="relative">
                   <img
                     src={course.image}
@@ -42,7 +43,7 @@ function Home() {
                     <FiPlayCircle className="text-white text-5xl" />
                   </div>
                 </div>
-                {/* Course Title */}
+                
                 <div className="p-4">
                   <h2 className="text-center text-lg font-semibold">{course.title}</h2>
                 </div>
@@ -55,7 +56,7 @@ function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((course) => (
               <div key={course.id} className="bg-gray-100 rounded-lg shadow-md overflow-hidden">
-                {/* Course Image with Play Button Overlay */}
+                
                 <div className="relative">
                   <img
                     src={course.image}
@@ -66,7 +67,7 @@ function Home() {
                     <FiPlayCircle className="text-white text-5xl" />
                   </div>
                 </div>
-                {/* Course Title */}
+               
                 <div className="p-4">
                   <h2 className="text-center text-lg font-semibold">{course.title}</h2>
                 </div>
@@ -74,7 +75,7 @@ function Home() {
             ))}
             {courses.map((course) => (
               <div key={course.id} className="bg-gray-100 rounded-lg shadow-md overflow-hidden">
-                {/* Course Image with Play Button Overlay */}
+                
                 <div className="relative">
                   <img
                     src={course.image}
@@ -85,7 +86,7 @@ function Home() {
                     <FiPlayCircle className="text-white text-5xl" />
                   </div>
                 </div>
-                {/* Course Title */}
+               
                 <div className="p-4">
                   <h2 className="text-center text-lg font-semibold">{course.title}</h2>
                 </div>
@@ -93,7 +94,7 @@ function Home() {
             ))}
             {courses.map((course) => (
               <div key={course.id} className="bg-gray-100 rounded-lg shadow-md overflow-hidden">
-                {/* Course Image with Play Button Overlay */}
+               
                 <div className="relative">
                   <img
                     src={course.image}
@@ -104,7 +105,7 @@ function Home() {
                     <FiPlayCircle className="text-white text-5xl" />
                   </div>
                 </div>
-                {/* Course Title */}
+                
                 <div className="p-4">
                   <h2 className="text-center text-lg font-semibold">{course.title}</h2>
                 </div>

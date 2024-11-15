@@ -2,6 +2,7 @@ import { SlSocialInstagram, SlSocialYoutube } from "react-icons/sl";
 import { FaLinkedinIn } from "react-icons/fa";
 import { SiTiktok } from "react-icons/si";
 import { RiTwitterXFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 function Lower() {
   return (
@@ -28,9 +29,15 @@ function Lower() {
       </div>
 
 
-      <div className="flex-col">
-        <div className="justify-center flex text-center">Join Our Community!</div>
-        <div className="bg-blue-500 rounded-lg p-2 text-sm text-center ">Join Our Community</div>
+      <div className="flex-col text-right">
+      <Link to="/">
+        <div className=" ">Join Our Community!</div>
+        </Link>
+
+        <Link to='/'>
+        
+        <div className=" ">Subscribe to our Newsletter</div>
+        </Link>
       </div>
     </footer>
   );
