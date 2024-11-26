@@ -68,7 +68,7 @@ function Header() {
                 Mock Test
               </Link>
               <Link to="/community" className="block rounded-lg py-2">
-                Community
+                Join the Community
               </Link>
               <Link to="/blog" className="block rounded-lg py-2">
                 Blog (coming soon)

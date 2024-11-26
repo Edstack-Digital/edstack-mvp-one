@@ -13,7 +13,7 @@ function Mock() {
               Subscribe
             </button>
           </div>
-          <div><img src="/ed.png" alt="edstack logo" className="h-56" /></div>
+          <div><img src="/ed.png" alt="edstack logo" className="h-56 opacity-50" /></div>
         </div>
       <div className="mb-11 mt-11 px-16 font-[Satoshi] lg:px-16">
         <h1 className="mb-6 text-xl font-bold">Mockup test</h1>
