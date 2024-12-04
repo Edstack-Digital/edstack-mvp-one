@@ -12,7 +12,7 @@ function Tutor() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col items-center">
             <img src="/image.png" alt="Abiodun Mubarak" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Abiodun Mubarak</div>
+            <div className="mb-2 text-lg font-semibold">Abiodun Mubarak!</div>
             <Rating className="mb-3">
               <Rating.Star />
               <Rating.Star />
