@@ -7,6 +7,7 @@ import Blog from "../pages/Blog";
 import Profile from "../pages/Profile";
 import Auth from "../pages/Auth";
 import { AuthProvider } from "../context/AuthContext";
+import CoursePage from "../pages/CoursePage";
 
 function Main() {
   return (
@@ -20,6 +21,7 @@ function Main() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/signin" element={<Auth/>} />
         <Route path="/profile" element={<Profile/>} />
+        <Route path="/course/:id" element={<CoursePage />} />
       </Routes>
     </Router>
     </AuthProvider>
