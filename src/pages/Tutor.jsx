@@ -1,8 +1,112 @@
+import { useState } from "react";
 import { Rating } from "flowbite-react";
 import Header from "../components/common/Header";
 import Lower from "../components/common/Lower";
 
 function Tutor() {
+  const [showDialog, setShowDialog] = useState(false);
+  const [contactInfo, setContactInfo] = useState({ name: "", phone: "", email: "" });
+
+  const tutors = [
+    {
+      name: "Abiodun Mubarak",
+      phone: "123-456-7890",
+      email: "abiodun@example.com",
+      subjects: ["Mathematics", "Industrial Maths"],
+      image: "/t1.jpeg",
+      rating: 5,
+    },
+    {
+      name: "Abiodun Mubarak",
+      phone: "123-456-7890",
+      email: "abiodun@example.com",
+      subjects: ["Mathematics", "Industrial Maths"],
+      image: "/image.png",
+      rating: 5,
+    },
+    {
+      name: "Abiodun Mubarak",
+      phone: "123-456-7890",
+      email: "abiodun@example.com",
+      subjects: ["Mathematics", "Industrial Maths"],
+      image: "/image.png",
+      rating: 5,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+    {
+      name: "Hannah Zeus",
+      phone: "987-654-3210",
+      email: "hannah@example.com",
+      subjects: ["Geography", "Geology"],
+      image: "/image1.png",
+      rating: 4,
+    },
+  ];
+
+  const handleContactClick = (tutor) => {
+    setContactInfo(tutor);
+    setShowDialog(true);
+  };
+
+  const closeDialog = () => {
+    setShowDialog(false);
+  };
+
   return (
     <>
       <Header />
@@ -10,260 +114,57 @@ function Tutor() {
         <div className="mb-6 text-2xl font-bold">Tutors</div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col items-center">
-            <img src="/image.png" alt="Abiodun Mubarak" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Abiodun Mubarak!</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Mathematics
+          {tutors.map((tutor, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <img src={tutor.image} alt={tutor.name} className="mb-4 rounded-lg" />
+              <div className="mb-2 text-lg font-semibold">{tutor.name}</div>
+              <Rating className="mb-3">
+                {[...Array(5)].map((_, i) => (
+                  <Rating.Star key={i} filled={i < tutor.rating} />
+                ))}
+              </Rating>
+              <div className="flex gap-2">
+                {tutor.subjects.map((subject, idx) => (
+                  <div
+                    key={idx}
+                    className="rounded-lg border border-black  px-2 py-1 text-sm"
+                  >
+                    {subject}
+                  </div>
+                ))}
               </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Industrial Maths
-              </div>
+              <button
+                className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700"
+                onClick={() => handleContactClick(tutor)}
+              >
+                Contact
+              </button>
             </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          <div className="flex flex-col items-center">
-            <img src="/image.png" alt="Abiodun Mubarak" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Abiodun Mubarak</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Mathematics
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Industrial Maths
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image.png" alt="Abiodun Mubarak" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Abiodun Mubarak</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Mathematics
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Industrial Maths
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
-            </button>
-          </div>
-
-          <div className="flex flex-col items-center">
-            <img src="/image1.png" alt="Hannah Zeus" className="mb-4" />
-            <div className="mb-2 text-lg font-semibold">Hannah Zeus</div>
-            <Rating className="mb-3">
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star />
-              <Rating.Star filled={false} />
-            </Rating>
-            <div className="flex gap-2">
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geography
-              </div>
-              <div className="rounded-lg border border-gray-300 px-2 py-1 text-sm">
-                Geology
-              </div>
-            </div>
-            <button className="mt-4 w-full rounded-lg bg-blue-600 py-2 text-white hover:bg-blue-700">
-              Contact
+      {/* Dialog Box */}
+      {showDialog && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="w-96 rounded-lg bg-white p-6 shadow-lg">
+            <h3 className="mb-4 text-lg font-bold">{contactInfo.name}'s Contact Info</h3> 
+            <p className="mb-2">
+              <strong>Phone:</strong> {contactInfo.phone}
+            </p>
+            <p className="mb-4">
+              <strong>Email:</strong> {contactInfo.email}
+            </p>
+            <button
+              className="w-full rounded-lg bg-blue-700 py-2 text-white hover:bg-red-700"
+              onClick={closeDialog}
+            >
+              Close
             </button>
           </div>
         </div>
-      </div>
+      )}
+
       <Lower />
     </>
   );
