@@ -49,7 +49,7 @@ function Lower() {
         <div className="underline">Join Our Community!</div>
         </Link>
 
-        <Link to='/'>
+        <Link to='https://edstackhq.substack.com/'>
         
         <div className="underline">Subscribe to our Newsletter</div>
         </Link>

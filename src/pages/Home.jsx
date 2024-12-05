@@ -21,7 +21,7 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="mt-11 mb-11 grid grid-cols-1 gap-10 px-7 font-[Satoshi] lg:grid-cols-4 lg:px-16">
+      <div className="mt-11 mb-11 grid grid-cols-1  bg-white gap-10 px-7 font-[Satoshi] lg:grid-cols-4 lg:px-16">
         {/* Left Section - Courses */}
         <div className="col-span-3">
           <h1 className="mb-6 text-xl">Recommended courses</h1>
