@@ -2,14 +2,33 @@
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { HiMenu, HiX } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("John Doe"); 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleProfileClick = () => {
+    if (isLoggedIn) {
+      navigate("/profile");
+    } else {
+      navigate("/signin"); 
+    }
+  };
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase();
   };
 
   return (
@@ -42,9 +61,20 @@ function Header() {
         </button>
 
         
-        <div className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-blue-600 text-white">
-          IP
-        </div>
+        <button
+          onClick={handleProfileClick}
+          className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold"
+        >
+          {isLoggedIn ? (
+            getInitials(userName) 
+          ) : (
+            <img
+              src="/avatar.png"
+              alt="Profile Avatar"
+              className="w-8 h-8 rounded-full"
+            />
+          )}
+        </button>
 
       
         {isMenuOpen && (
