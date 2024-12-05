@@ -9,10 +9,10 @@ function Tutor() {
 
   const tutors = [
     {
-      name: "Abiodun Mubarak",
-      phone: "123-456-7890",
-      email: "abiodun@example.com",
-      subjects: ["Mathematics", "Industrial Maths"],
+      name: "Ridwanullah Adeniran",
+      phone: "09065111851",
+      email: "iridwanullah03@gmail.com",
+      subjects: ["GEG", "MEG"],
       image: "/t1.jpeg",
       rating: 5,
     },
