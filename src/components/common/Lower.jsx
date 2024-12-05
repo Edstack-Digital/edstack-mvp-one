@@ -17,11 +17,26 @@ function Lower() {
 
       <div className="flex-col">
         <div className="flex justify-center space-x-4">
+
+        <Link to='https://www.youtube.com/@edstackhq' target="_blank">
           <SlSocialYoutube />
+          </Link>
+
+          <Link to='https://linkedin.com/company/edstackhq' target="_blank">
           <FaLinkedinIn />
+          </Link>
+
+          <Link to='https://instagram.com/edstackhq' target="_blank">
           <SlSocialInstagram />
+          </Link>
+
+          <Link to='https://tiktok.com/@edstackhq' target="_blank">
           <SiTiktok />
+          </Link>
+
+          <Link to='https://x.com/edstackhq' target="_blank">
           <RiTwitterXFill />
+          </Link>
         </div>
 
         
@@ -30,7 +45,7 @@ function Lower() {
 
 
       <div className="flex-col text-right">
-      <Link to="/">
+      <Link to="https://chat.whatsapp.com/BUwJaMkbSzl9lHlidEgiq1" target="_blank">
         <div className="underline">Join Our Community!</div>
         </Link>
 

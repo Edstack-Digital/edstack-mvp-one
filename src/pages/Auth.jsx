@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -9,7 +10,9 @@ function Auth() {
     password: "",
   });
 
-  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,10 +21,10 @@ function Auth() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(`${isSignUp ? "Sign Up" : "Sign In"} data:`, formData);
-
-    navigate("/profile");
+    const userData = { ...formData };
+    if (!isSignUp) delete userData.name; 
+    login(userData);
+    navigate("/profile"); 
   };
 
   return (

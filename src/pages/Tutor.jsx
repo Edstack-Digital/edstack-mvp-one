@@ -144,11 +144,11 @@ function Tutor() {
         </div>
       </div>
 
-      {/* Dialog Box */}
+      
       {showDialog && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="w-96 rounded-lg bg-white p-6 shadow-lg">
-            <h3 className="mb-4 text-lg font-bold">{contactInfo.name}'s Contact Info</h3> 
+            <h3 className="mb-4 text-lg font-bold">{contactInfo.name} Contact Info</h3> 
             <p className="mb-2">
               <strong>Phone:</strong> {contactInfo.phone}
             </p>
