@@ -110,14 +110,14 @@ function Tutor() {
   return (
     <>
       <Header />
-      <div className="mb-11 mt-11 px-16 dark:text-white font-[Satoshi] lg:px-16">
+      <div className="mb-11 mt-11 px-5 dark:text-white font-[Satoshi] lg:px-16">
         <div className="mb-6 text-2xl font-bold">Tutors</div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 lg:gap-8 lg:grid-cols-4">
           {tutors.map((tutor, index) => (
             <div key={index} className="flex flex-col items-center">
               <img src={tutor.image} alt={tutor.name} className="mb-4 rounded-lg" />
-              <div className="mb-2 text-lg font-semibold">{tutor.name}</div>
+              <div className="mb-2 text-sm lg:text-lg font-semibold">{tutor.name}</div>
               <Rating className="mb-3">
                 {[...Array(5)].map((_, i) => (
                   <Rating.Star key={i} filled={i < tutor.rating} />

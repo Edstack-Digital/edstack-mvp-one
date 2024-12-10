@@ -32,7 +32,7 @@ function Header() {
   };
 
   return (
-    <nav className="flex items-center justify-between bg-[#1D1E2F] px-16 py-2 font-[Satoshi] text-white">
+    <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-2 font-[Satoshi] text-white lg:px-16">
       <div className="flex items-center space-x-2">
         <Link to="/">
           <img src="/logo.png" alt="edstack logo" className="h-6 sm:h-6" />
@@ -58,7 +58,7 @@ function Header() {
 
         <button
           onClick={handleProfileClick}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 font-bold text-white"
+          className="hidden h-10 w-10 items-center justify-center rounded-full bg-blue-500 font-bold text-white lg:flex"
         >
           {user ? (
             getInitials(user.name)
@@ -70,10 +70,12 @@ function Header() {
             />
           )}
         </button>
-        <DarkModeToggle />
+        <div className="lg:flex hidden">
+          <DarkModeToggle />
+        </div>
 
         {isMenuOpen && (
-          <div className="absolute right-4 top-16 z-50 w-48 rounded-lg bg-white  dark:bg-black dark:border-gray-500 border-2 border-blue-500 dark:text-white p-4 text-center text-[#1D1E2F] shadow-lg">
+          <div className="absolute right-4 top-16 z-50 w-48 rounded-lg border-2 border-blue-500 bg-white p-4 text-center text-[#1D1E2F] shadow-lg dark:border-gray-500 dark:bg-black dark:text-white">
             {/* <div className="mb-4 flex items-center rounded-full bg-gray-700 p-2 lg:hidden">
               <input
                 type="text"

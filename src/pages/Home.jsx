@@ -10,8 +10,8 @@ function Home() {
 
   const courses = [
     { id: 1, title: "Understanding Geography 101", image: "/thumbnail.png" },
-    { id: 1, title: "Understanding Geography 101", image: "/thumbnail.png" },
-    { id: 1, title: "Understanding Geography 101", image: "/thumbnail.png" },
+    { id: 2, title: "Understanding Geography 101", image: "/thumbnail.png" },
+    { id: 3, title: "Understanding Geography 101", image: "/thumbnail.png" },
   ];
 
   const handleCourseClick = (id) => {
@@ -21,7 +21,7 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="mt-11 mb-11 grid grid-cols-1 text-black dark:text-white bg-white dark:bg-black gap-10 px-7 font-[Satoshi] lg:grid-cols-4 lg:px-16">
+      <div className="mt-11 mb-11 grid grid-cols-2 text-black dark:text-white bg-white dark:bg-black gap-10 px-7 font-[Satoshi] lg:grid-cols-4 lg:px-16">
         {/* Left Section - Courses */}
         <div className="col-span-3">
           <h1 className="mb-6 text-xl">Recommended courses</h1>
