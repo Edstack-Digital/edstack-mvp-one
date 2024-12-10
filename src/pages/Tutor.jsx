@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Rating } from "flowbite-react";
 import Header from "../components/common/Header";
 import Lower from "../components/common/Lower";
+import { FiCopy } from "react-icons/fi";
 
 function Tutor() {
   const [showDialog, setShowDialog] = useState(false);
   const [contactInfo, setContactInfo] = useState({ name: "", phone: "", email: "" });
+  const [copyMessage, setCopyMessage] = useState("");
 
   const tutors = [
     {
@@ -107,6 +109,13 @@ function Tutor() {
     setShowDialog(false);
   };
 
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopyMessage("Copied to clipboard!");
+      setTimeout(() => setCopyMessage(""), 2000); // Clear message after 2 seconds
+    });
+  };
+
   return (
     <>
       <Header />
@@ -116,7 +125,7 @@ function Tutor() {
         <div className="grid grid-cols-2 gap-3 lg:gap-8 lg:grid-cols-4">
           {tutors.map((tutor, index) => (
             <div key={index} className="flex flex-col items-center">
-              <img src={tutor.image} alt={tutor.name} className="mb-4 rounded-lg" />
+              <img src={tutor.image} alt={tutor.name} className="mb-4 rounded-lg " />
               <div className="mb-2 text-sm lg:text-lg font-semibold">{tutor.name}</div>
               <Rating className="mb-3">
                 {[...Array(5)].map((_, i) => (
@@ -148,13 +157,23 @@ function Tutor() {
       {showDialog && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="w-96 rounded-lg dark:bg-black dark:text-white bg-white p-6 shadow-lg">
-            <h3 className="mb-4 text-lg font-bold">{contactInfo.name} Contact Info</h3> 
-            <p className="mb-2">
+            <h3 className="mb-4 text-lg font-bold">{contactInfo.name} Contact Info</h3>
+            <p className="mb-2 flex items-center gap-2">
               <strong>Phone:</strong> {contactInfo.phone}
+              <FiCopy
+                className="cursor-pointer text-blue-600 hover:text-blue-800"
+                onClick={() => copyToClipboard(contactInfo.phone)}
+              />
             </p>
-            <p className="mb-4">
+            <p className="mb-4 flex items-center gap-2">
               <strong>Email:</strong> {contactInfo.email}
+              <FiCopy
+                className="cursor-pointer text-blue-600 hover:text-blue-800"
+                onClick={() => copyToClipboard(contactInfo.email)}
+              />
             </p>
+            {copyMessage && <p className="mb-2 text-sm text-green-600">{copyMessage}</p>}
+            
             <button
               className="w-full rounded-lg bg-blue-700 py-2 text-white hover:bg-red-700"
               onClick={closeDialog}
