@@ -110,7 +110,7 @@ function Tutor() {
   return (
     <>
       <Header />
-      <div className="mb-11 mt-11 px-16 font-[Satoshi] lg:px-16">
+      <div className="mb-11 mt-11 px-16 dark:text-white font-[Satoshi] lg:px-16">
         <div className="mb-6 text-2xl font-bold">Tutors</div>
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -127,7 +127,7 @@ function Tutor() {
                 {tutor.subjects.map((subject, idx) => (
                   <div
                     key={idx}
-                    className="rounded-lg border border-black  px-2 py-1 text-sm"
+                    className="rounded-lg border border-black dark:border-white px-2 py-1 text-sm"
                   >
                     {subject}
                   </div>
@@ -147,7 +147,7 @@ function Tutor() {
       
       {showDialog && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="w-96 rounded-lg bg-white p-6 shadow-lg">
+          <div className="w-96 rounded-lg dark:bg-black dark:text-white bg-white p-6 shadow-lg">
             <h3 className="mb-4 text-lg font-bold">{contactInfo.name} Contact Info</h3> 
             <p className="mb-2">
               <strong>Phone:</strong> {contactInfo.phone}

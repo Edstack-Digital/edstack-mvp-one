@@ -4,6 +4,7 @@ import { FiSearch } from "react-icons/fi";
 import { HiMenu, HiX } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import DarkModeToggle from "../UI/DarkModeToggle";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,17 +70,18 @@ function Header() {
             />
           )}
         </button>
+        <DarkModeToggle />
 
         {isMenuOpen && (
-          <div className="absolute right-4 top-16 z-50 w-48 rounded-lg bg-white p-4 text-center text-[#1D1E2F] shadow-lg">
-            <div className="mb-4 flex items-center rounded-full bg-gray-700 p-2 lg:hidden">
+          <div className="absolute right-4 top-16 z-50 w-48 rounded-lg bg-white  dark:bg-black dark:border-gray-500 border-2 border-blue-500 dark:text-white p-4 text-center text-[#1D1E2F] shadow-lg">
+            {/* <div className="mb-4 flex items-center rounded-full bg-gray-700 p-2 lg:hidden">
               <input
                 type="text"
                 placeholder="Search course"
                 className="bg-transparent px-1 text-sm text-white placeholder-gray-400"
               />
               <FiSearch className="cursor-pointer text-white" />
-            </div>
+            </div> */}
 
             <div>
               <Link to="/tutor" className="block rounded-lg py-2">

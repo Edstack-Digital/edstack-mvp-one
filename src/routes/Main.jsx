@@ -8,10 +8,15 @@ import Profile from "../pages/Profile";
 import Auth from "../pages/Auth";
 import { AuthProvider } from "../context/AuthContext";
 import CoursePage from "../pages/CoursePage";
+import { CourseProvider } from "../context/CourseContext";
 
 function Main() {
   return (
+    <div className="bg-white dark:bg-black">
     <AuthProvider>
+       <CourseProvider>
+
+
     <Router>
       <Routes>
         <Route index element={<Home />} />
@@ -24,7 +29,9 @@ function Main() {
         <Route path="/course/:id" element={<CoursePage />} />
       </Routes>
     </Router>
+       </CourseProvider>
     </AuthProvider>
+    </div>
   );
 }
 

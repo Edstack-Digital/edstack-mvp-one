@@ -46,7 +46,7 @@ function Profile() {
   return (
     <>
       <Header />
-      <div className="p-11 font-[Satoshi] bg-gray-100">
+      <div className="p-11 font-[Satoshi] dark:bg-black bg-gray-100">
         <div className="mb-16   flex flex-col justify-center items-center">
           
           <div className="flex flex-col  items-center">
@@ -94,7 +94,7 @@ function Profile() {
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -106,7 +106,7 @@ function Profile() {
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -118,7 +118,7 @@ function Profile() {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -130,7 +130,7 @@ function Profile() {
               name="matricNumber"
               value={formData.matricNumber}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -142,7 +142,7 @@ function Profile() {
               name="university"
               value={formData.university}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -154,7 +154,7 @@ function Profile() {
               name="department"
               value={formData.department}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -166,15 +166,15 @@ function Profile() {
               name="level"
               value={formData.level}
               onChange={handleInputChange}
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
-          <button
+          {/* <button
             type="button"
             className="col-span-2 mt-4 w-full rounded bg-blue-500 px-4 py-2 text-white"
           >
             Save Changes
-          </button>
+          </button> */}
         </form>
       </div>
     </>

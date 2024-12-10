@@ -33,9 +33,9 @@ function CoursePage() {
       <div className="px-7 py-10 lg:px-16">
         {/* Progress Bar */}
         <div className="mb-6">
-          <p className="text-sm text-gray-500">Course progress: 67%</p>
+          <p className="text-sm text-gray-500">Course progress: 62%</p>
           <div className="h-2 w-full bg-gray-200 rounded-lg">
-            <div className="h-2 w-[67%] bg-blue-500 rounded-lg"></div>
+            <div className="h-2 w-[62%] bg-blue-500 rounded-lg"></div>
           </div>
         </div>
 
@@ -72,12 +72,12 @@ function CoursePage() {
               onChange={(e) => setNewComment(e.target.value)}
               className="flex-grow border border-gray-300 p-2 rounded-lg"
             />
-            <button
+            {/* <button
               onClick={handleAddComment}
               className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
             >
               Post
-            </button>
+            </button> */}
           </div>
         </div>
 
@@ -129,3 +129,127 @@ function CoursePage() {
 }
 
 export default CoursePage;
+
+
+
+
+
+
+// import { useParams } from "react-router-dom";
+// import { useState } from "react";
+// import { useCourseContext } from "../context/CourseContext";
+// import ReactPlayer from "react-player";
+
+// function CoursePage() {
+//   const { id } = useParams();
+//   const { courses, addComment } = useCourseContext();
+//   const course = courses.find((course) => course.id === id);
+
+//   const [newComment, setNewComment] = useState("");
+//   const [progress, setProgress] = useState(0);
+
+//   if (!course) {
+//     return <p>Course not found.</p>;
+//   }
+
+//   const handleTimeUpdate = (e) => {
+//     const video = e.target;
+//     const progressPercent = (video.currentTime / video.duration) * 100;
+//     setProgress(progressPercent);
+//   };
+
+//   const handleAddComment = () => {
+//     if (newComment.trim()) {
+//       addComment(course.id, { text: newComment, date: new Date() });
+//       setNewComment("");
+//     }
+//   };
+
+//   return (
+//     <div className="p-6">
+//       <h1 className="text-2xl font-bold">{course.title}</h1>
+
+//       <div className="my-4">
+//         <label htmlFor="progress" className="block text-sm font-medium">
+//           Course progress: {Math.round(progress)}%
+//         </label>
+//         <progress id="progress" value={progress} max="100" className="w-full"></progress>
+//       </div>
+
+//       <div className="my-6">
+//         <ReactPlayer
+//           url={course.videoUrl}
+//           controls
+//           width="100%"
+//           height="100%"
+//           onTimeUpdate={handleTimeUpdate}
+//         />
+//       </div>
+
+//       <div className="my-8">
+//         <h2 className="text-xl font-semibold">Comments</h2>
+//         <div className="my-4">
+//           {course.comments.length > 0 ? (
+//             course.comments.map((comment, index) => (
+//               <div key={index} className="my-2 border-b pb-2">
+//                 <p>{comment.text}</p>
+//                 <small className="text-gray-500">
+//                   {new Date(comment.date).toLocaleString()}
+//                 </small>
+//               </div>
+//             ))
+//           ) : (
+//             <p className="text-gray-500">No comments yet.</p>
+//           )}
+//         </div>
+//         <div className="mt-4 flex items-center">
+//           <input
+//             type="text"
+//             value={newComment}
+//             onChange={(e) => setNewComment(e.target.value)}
+//             placeholder="Add a comment"
+//             className="flex-grow border p-2"
+//           />
+//           <button
+//             onClick={handleAddComment}
+//             className="ml-2 bg-blue-500 text-white px-4 py-2"
+//           >
+//             Add
+//           </button>
+//         </div>
+//       </div>
+
+//       <div className="my-8">
+//         <h2 className="text-xl font-semibold">Courses Playlist</h2>
+//         <ul className="my-4 grid grid-cols-2 gap-4">
+//           {course.playlist.map((lesson) => (
+//             <li
+//               key={lesson.id}
+//               className={`p-4 border rounded-lg ${
+//                 lesson.completed ? "bg-green-100" : ""
+//               }`}
+//             >
+//               {lesson.title} {lesson.completed && <span>✓</span>}
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+
+//       <div className="my-8">
+//         <h2 className="text-xl font-semibold">Related Courses</h2>
+//         <ul className="my-4 grid grid-cols-2 gap-4">
+//           {course.relatedCourses.map((related) => (
+//             <li
+//               key={related.id}
+//               className="p-4 border rounded-lg cursor-pointer"
+//             >
+//               {related.title}
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default CoursePage;
