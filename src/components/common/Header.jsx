@@ -5,6 +5,7 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import DarkModeToggle from "../UI/DarkModeToggle";
+import { MdLogout } from "react-icons/md";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,6 +31,10 @@ function Header() {
       .join("")
       .toUpperCase();
   };
+
+  // const handleLogout() {
+
+  // }
 
   return (
     <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-2 font-[Satoshi] text-white lg:px-16">
@@ -70,12 +75,12 @@ function Header() {
             />
           )}
         </button>
-        <div className="lg:flex hidden">
+        <div className="hidden lg:flex">
           <DarkModeToggle />
         </div>
 
         {isMenuOpen && (
-          <div className="absolute right-4 top-16 z-50 w-48 rounded-lg border-2 border-blue-500 bg-white p-4 text-center text-[#1D1E2F] shadow-lg dark:border-gray-500 dark:bg-black dark:text-white">
+          <div className="absolute right-28 top-16 z-50 w-36 rounded-lg border-2 border-blue-500 bg-white p-4 text-center text-[#1D1E2F] shadow-lg dark:border-gray-500 dark:bg-black dark:text-white">
             {/* <div className="mb-4 flex items-center rounded-full bg-gray-700 p-2 lg:hidden">
               <input
                 type="text"
@@ -97,10 +102,24 @@ function Header() {
                 target="_blank"
                 className="block rounded-lg py-2"
               >
-                Join the Community
+                Community
               </Link>
-              <Link to="/blog" className="block rounded-lg py-2">
-                Blog (coming soon)
+              <Link
+                to="https://edstackhq.substack.com/"
+                className="block rounded-lg py-2"
+              >
+                Blog
+              </Link>
+              <Link
+                to="/"
+                className="block rounded-lg py-2"
+              >
+                <div className="flex justify-center items-center text-red-500 gap-2">
+                  <span>
+                    <MdLogout />
+                  </span>
+                  <span>Log out</span>
+                </div>
               </Link>
             </div>
           </div>

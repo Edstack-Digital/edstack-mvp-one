@@ -94,7 +94,7 @@ function Profile() {
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
