@@ -74,7 +74,7 @@ function Lower() {
         </Link>
         <Link to="/mock" className="flex flex-col items-center">
           <FiBook
-            className={`text-2xl ${
+            className={`text-3xl ${
               isActive("/mock") ? "text-[#0077CC]" : "text-black dark:text-white"
             }`}
           />
@@ -88,7 +88,7 @@ function Lower() {
         </Link>
         <Link to="/tutor" className="flex flex-col items-center">
           <FiUsers
-            className={`text-2xl ${
+            className={`text-3xl ${
               isActive("/tutor") ? "text-[#0077CC]" : "text-black dark:text-white"
             }`}
           />
@@ -102,7 +102,7 @@ function Lower() {
         </Link>
         <Link to="/profile" className="flex flex-col items-center">
           <FiUser
-            className={`text-2xl ${
+            className={`text-3xl ${
               isActive("/profile") ? "text-[#0077CC]" : "text-black dark:text-white"
             }`}
           />

@@ -84,7 +84,7 @@ function Profile() {
           </div>
         </div>
 
-        <form className="grid grid-cols-2 gap-11">
+        <form className="grid grid-cols-1 lg:grid-cols-2 gap-11">
           <div>
             <label className="block text-base mb-3 font-medium text-gray-600">
               First Name
