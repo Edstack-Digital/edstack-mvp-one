@@ -37,7 +37,7 @@ function Header() {
   // }
 
   return (
-    <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-2 font-[Satoshi] text-white lg:px-16">
+    <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-4 lg:py-2 font-[Satoshi] text-white lg:px-16">
       <div className="flex items-center space-x-2">
         <Link to="/">
           <img src="/logo.png" alt="edstack logo" className="h-6 sm:h-6" />

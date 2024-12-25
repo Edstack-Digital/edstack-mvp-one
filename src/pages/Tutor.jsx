@@ -119,7 +119,7 @@ function Tutor() {
   return (
     <>
       <Header />
-      <div className="mb-11 mt-11 px-5 dark:text-white font-[Satoshi] lg:px-16">
+      <div className="mb-32 lg:mb-11 mt-11 px-5 dark:text-white font-[Satoshi] lg:px-16">
         <div className="mb-6 text-2xl font-bold">Tutors</div>
 
         <div className="grid grid-cols-2 gap-3 lg:gap-8 lg:grid-cols-4">
