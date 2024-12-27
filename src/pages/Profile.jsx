@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "../components/common/Header";
 import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+import Lower from "../components/common/Lower";
 
 function Profile() {
   const { user } = useAuth(); // Fetch logged-in user details
@@ -14,15 +16,15 @@ function Profile() {
     level: "",
   });
 
-  const [avatar, setAvatar] = useState(null); // To handle avatar upload
+  const [avatar, setAvatar] = useState(null); 
 
-  // Handle input changes for the editable form fields
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Handle avatar upload
+
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -30,15 +32,24 @@ function Profile() {
     }
   };
 
-  // Handle avatar deletion
+
   const handleAvatarDelete = () => {
     setAvatar(null);
   };
 
   if (!user) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center flex-col">
         <h1 className="text-2xl font-bold">No user logged in.</h1>
+        <div className="mt-11">
+
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4">
+          <Link to="/signin">
+          Sign In or Sign Up
+          </Link>
+        </button>
+        
+        </div>
       </div>
     );
   }
@@ -46,7 +57,7 @@ function Profile() {
   return (
     <>
       <Header />
-      <div className="p-11 font-[Satoshi] dark:bg-black bg-gray-100">
+      <div className="p-11 font-[Satoshi] dark:bg-black  bg-gray-100">
         <div className="mb-16   flex flex-col justify-center items-center">
           
           <div className="flex flex-col  items-center">
@@ -84,7 +95,7 @@ function Profile() {
           </div>
         </div>
 
-        <form className="grid grid-cols-1 lg:grid-cols-2 gap-11">
+        <form className="grid grid-cols-1 mb-8 lg:grid-cols-2 gap-11">
           <div>
             <label className="block text-base mb-3 font-medium text-gray-600">
               First Name
@@ -169,14 +180,15 @@ function Profile() {
               className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
             />
           </div>
-          {/* <button
+        </form>
+          <button
             type="button"
-            className="col-span-2 mt-4 w-full rounded bg-blue-500 px-4 py-2 text-white"
+            className="col-span-2 mt-4 w-full lg:mb-0 mb-14 rounded bg-blue-500 px-4 py-2 text-white"
           >
             Save Changes
-          </button> */}
-        </form>
+          </button>
       </div>
+      <Lower />
     </>
   );
 }

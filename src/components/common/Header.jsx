@@ -5,6 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import DarkModeToggle from "../UI/DarkModeToggle";
 import { MdLogout } from "react-icons/md";
+import { SlSocialInstagram, SlSocialYoutube } from "react-icons/sl";
+import { FaLinkedinIn } from "react-icons/fa";
+import { SiTiktok } from "react-icons/si";
+import { RiTwitterXFill } from "react-icons/ri";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,7 +36,7 @@ function Header() {
   };
 
   return (
-    <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-4 lg:py-2 font-[Satoshi] text-white lg:px-16">
+    <nav className="flex items-center justify-between bg-[#1D1E2F] px-5 py-4 font-[Satoshi] text-white lg:px-16 lg:py-2">
       <div className="flex items-center space-x-2">
         <Link to="/">
           <img src="/logo.png" alt="edstack logo" className="h-6 sm:h-6" />
@@ -76,75 +80,91 @@ function Header() {
         </div>
 
         <div
-  className={`fixed top-0 right-0 z-50 h-full w-64 bg-white p-4 text-[#1D1E2F] shadow-lg transition-transform duration-300 dark:bg-black dark:text-white lg:hidden ${
-    isMenuOpen ? "translate-x-0" : "translate-x-full"
-  }`}
->
-  {/* Close Button */}
-  <button
-    className="text-2xl text-[#1D1E2F] dark:text-white"
-    onClick={handleMenuToggle}
-  >
-    <HiX />
-  </button>
+          className={`fixed right-0 top-0 z-50 h-full w-64 bg-white p-4 text-[#1D1E2F] shadow-lg transition-transform duration-300 dark:bg-black dark:text-white lg:hidden ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          } flex flex-col`}
+        >
+          {/* Close Button */}
+          <button
+            className="text-2xl text-[#1D1E2F] dark:text-white"
+            onClick={handleMenuToggle}
+          >
+            <HiX />
+          </button>
 
-  {/* Menu Items */}
-  <div className="mt-8 space-y-4 mr-2 items-end flex flex-col">
-    <Link to="/tutor" className="block rounded-lg py-2">
-      Book a Tutor
-    </Link>
-    <Link to="/mock" className="block rounded-lg py-2">
-      Mock Test
-    </Link>
-    <Link
-      to="https://chat.whatsapp.com/BUwJaMkbSzl9lHlidEgiq1"
-      target="_blank"
-      className="block rounded-lg py-2"
-    >
-      Community
-    </Link>
-    <Link
-      to="https://edstackhq.substack.com/"
-      className="block rounded-lg py-2"
-    >
-      Blog
-    </Link>
-    <Link to="/" className="block rounded-lg py-2">
-      <div className="flex items-center gap-2 text-red-500">
-        <MdLogout />
-        <span>Log out</span>
-      </div>
-    </Link>
-  </div>
+          {/* Menu Items */}
+          <div className="mt-8 flex flex-grow flex-col items-end space-y-4">
+            <div className="flex items-center space-x-2">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white">
+                {user?.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt="User Avatar"
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                ) : (
+                  `${user?.name?.split(" ")[0][0] ?? ""}${user?.name?.split(" ")[1]?.[0] ?? ""}`
+                )}
+              </div>
+              <p className="font-semibold">{user?.name ?? "No User"}</p>
+            </div>
 
-  {/* Footer Section */}
-  <div className="mt-auto flex flex-col items-center border-t border-gray-300 pt-4 dark:border-gray-600">
-    <img src="/logo.png" alt="Edstack Logo" className="h-8 mb-2" />
-    <p className="text-sm font-semibold text-center">Edstack Digital Ltd.</p>
-    <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
-      Empowering students
-    </p>
-    <div className="flex space-x-3 mt-2">
-      {/* Social Icons */}
-      <a href="#" className="text-gray-500 hover:text-blue-500">
-        <i className="fab fa-youtube"></i>
-      </a>
-      <a href="#" className="text-gray-500 hover:text-blue-500">
-        <i className="fab fa-linkedin"></i>
-      </a>
-      <a href="#" className="text-gray-500 hover:text-blue-500">
-        <i className="fab fa-instagram"></i>
-      </a>
-      <a href="#" className="text-gray-500 hover:text-blue-500">
-        <i className="fab fa-tiktok"></i>
-      </a>
-    </div>
-    <p className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-      Data, Privacy & Protection Terms
-    </p>
-  </div>
-</div>
+            <div className="w-full border-t border-gray-300"></div>
+            <Link
+              to="https://chat.whatsapp.com/BUwJaMkbSzl9lHlidEgiq1"
+              target="_blank"
+              className="block rounded-lg py-2"
+            >
+              Join our Community
+            </Link>
+            <Link
+              to="https://edstackhq.substack.com/"
+              target="_blank"
+              className="block rounded-lg py-2"
+            >
+              Subscribe to newsletter
+            </Link>
+            <Link
+              to="https://edstackhq.substack.com/"
+              target="_blank"
+              className="block rounded-lg py-2"
+            >
+              Blog
+            </Link>
+          </div>
 
+          {/* Footer Section */}
+          <div className="flex flex-col items-end border-t border-gray-300 pt-4 dark:border-gray-600">
+            <div className="mb-8 flex items-center">
+              <img src="/ed.png" alt="edstack logo" className="h-10 sm:h-10" />
+              <div className="flex-col text-right text-[#333333] dark:text-white">
+                <div>EdStack Digital Ltd.</div>
+                <div className="text-xs">Empowering students</div>
+              </div>
+            </div>
+
+            <div className="mt-2 flex space-x-3">
+              <Link to="https://www.youtube.com/@edstackhq" target="_blank">
+                <SlSocialYoutube />
+              </Link>
+              <Link to="https://linkedin.com/company/edstackhq" target="_blank">
+                <FaLinkedinIn />
+              </Link>
+              <Link to="https://instagram.com/edstackhq" target="_blank">
+                <SlSocialInstagram />
+              </Link>
+              <Link to="https://tiktok.com/@edstackhq" target="_blank">
+                <SiTiktok />
+              </Link>
+              <Link to="https://x.com/edstackhq" target="_blank">
+                <RiTwitterXFill />
+              </Link>
+            </div>
+            <p className="text-xs text-[#333333] dark:text-white">
+              Data, Privacy & Protection Terms
+            </p>
+          </div>
+        </div>
 
         {isMenuOpen && (
           <div className="absolute right-28 top-16 z-50 hidden w-36 rounded-lg border-2 border-blue-500 bg-white p-4 text-center text-[#1D1E2F] shadow-lg dark:border-gray-500 dark:bg-black dark:text-white lg:block">
@@ -183,4 +203,3 @@ function Header() {
 }
 
 export default Header;
-
