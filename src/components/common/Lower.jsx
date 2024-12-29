@@ -57,7 +57,7 @@ function Lower() {
       </div>
 
       {/* Mobile Footer Navigation  */}
-      <div className="fixed bottom-0 flex w-full items-center justify-around border-t-2  bg-white p-4 dark:bg-[#1D1E2F] lg:hidden">
+      <div className="fixed bottom-0 flex w-full items-center justify-around border-t-2  bg-white p-4 dark:bg-black lg:hidden">
         <Link to="/" className="flex flex-col items-center">
           <AiOutlineHome
             className={`text-3xl ${
