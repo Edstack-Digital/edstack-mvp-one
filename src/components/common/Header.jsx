@@ -110,6 +110,13 @@ function Header() {
             </div>
 
             <div className="w-full border-t border-gray-300"></div>
+            <div className="flex items-center">
+              <span>
+                <DarkModeToggle />
+              </span>
+
+              {/* <span>Dark Mode</span> */}
+            </div>
             <Link
               to="https://chat.whatsapp.com/BUwJaMkbSzl9lHlidEgiq1"
               target="_blank"
@@ -134,6 +141,15 @@ function Header() {
           </div>
 
           {/* Footer Section */}
+            <div className="flex items-end justify-end">
+
+            <Link to="/" className="block rounded-lg py-2">
+              <div className="flex items-center justify-center gap-2 text-red-500">
+                <MdLogout />
+                <span>Log out</span>
+              </div>
+            </Link>
+            </div>
           <div className="flex flex-col items-end border-t border-gray-300 pt-4 dark:border-gray-600">
             <div className="mb-8 flex items-center">
               <img src="/ed.png" alt="edstack logo" className="h-10 sm:h-10" />
