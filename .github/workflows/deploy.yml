@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to cPanel
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ftp.edstack.xyz
+        server: 198.251.89.18
         username: edstack
         password: edstackhq@2025
         local-dir: './dist/' 
