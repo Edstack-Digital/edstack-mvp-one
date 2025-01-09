@@ -3,7 +3,7 @@ name: Deploy to cPanel
 on:
   push:
     branches:
-      - main  # or specify your branch
+      - main  
 
 jobs:
   build:
@@ -16,13 +16,13 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '22'  # Adjust to your Node version
+        node-version: '22'  
 
     - name: Install dependencies
       run: npm install
 
     - name: Build the project
-      run: npm run build  # For Vite, this creates the production build
+      run: npm run build  
 
     - name: Deploy to cPanel
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -30,5 +30,5 @@ jobs:
         server: ftp.edstack.xyz
         username: edstack
         password: edstackhq@2025
-        local-dir: './dist'  # Vite build output directory
-        server-dir: '/public_html'  # Replace with the directory where your site files should go
+        local-dir: './dist' 
+        server-dir: '/public_html'  
