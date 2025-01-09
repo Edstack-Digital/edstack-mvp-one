@@ -25,7 +25,7 @@ jobs:
       run: npm run build  # For Vite, this creates the production build
 
     - name: Deploy to cPanel
-      uses: SamKirkland/FTP-Deploy-Action@v4
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         ftp-server: ftp.edstack.xyz
         ftp-username: edstack
