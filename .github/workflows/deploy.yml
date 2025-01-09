@@ -31,4 +31,4 @@ jobs:
         username: edstack
         password: edstackhq@2025
         local-dir: './dist/' 
-        server-dir: '/public_html'  
+        server-dir: '/public_html/'  
