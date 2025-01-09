@@ -115,7 +115,7 @@ function Header() {
                 <DarkModeToggle />
               </span>
 
-              {/* <span>Dark Mode</span> */}
+              <span>Dark Mode</span>
             </div>
             <Link
               to="https://chat.whatsapp.com/BUwJaMkbSzl9lHlidEgiq1"

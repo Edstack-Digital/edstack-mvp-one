@@ -9,22 +9,30 @@ function Auth() {
     email: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
-  const { login } = useAuth();
-
-  const navigate = useNavigate()
+  const { login, signup } = useAuth(); // Include both login and signup methods
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = { ...formData };
-    if (!isSignUp) delete userData.name; 
-    login(userData);
-    navigate("/profile"); 
+    setError(null);
+
+    try {
+      if (isSignUp) {
+        await signup(formData); // Call signup for new users
+      } else {
+        await login({ email: formData.email, password: formData.password }); // Call login for existing users
+      }
+      navigate("/profile"); // Redirect to a protected page after success
+    } catch (err) {
+      setError(err.response?.data?.message || "Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -45,6 +53,7 @@ function Auth() {
             ? "Create an account and start your learning journey"
             : "Welcome back! Please enter your details"}
         </p>
+        {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           {isSignUp && (
             <div>
@@ -55,6 +64,7 @@ function Auth() {
                 value={formData.name}
                 onChange={handleInputChange}
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring"
+                required
               />
             </div>
           )}
@@ -66,6 +76,7 @@ function Auth() {
               value={formData.email}
               onChange={handleInputChange}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring"
+              required
             />
           </div>
           <div>
@@ -76,6 +87,7 @@ function Auth() {
               value={formData.password}
               onChange={handleInputChange}
               className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring"
+              required
             />
           </div>
           <Link>

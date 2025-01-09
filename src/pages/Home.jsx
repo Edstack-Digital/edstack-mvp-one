@@ -187,7 +187,7 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="mb-0 mt-11 gap-10 bg-white px-7 font-[Satoshi] text-black dark:bg-black dark:text-white lg:mb-11 lg:px-16">
+      <div className="min-h-screen mt-11 overflow-hidden -mb-0 lg:-mb-20 gap-10 bg-white px-7 font-[Satoshi] text-black dark:bg-black dark:text-white lg:px-16">
         {loading && <p>Loading courses...</p>}
         {error && <p className="text-red-500">{error}</p>}
 
@@ -207,15 +207,13 @@ function Home() {
                           className="relative cursor-pointer"
                           onClick={() => handleCourseClick(course.id)}
                         >
-                          <img
-                            src={course.image || "/placeholder.png"}
-                            alt={course.title}
-                            className="h-48 w-full object-cover"
-                          />
-
-                          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                            <FiPlayCircle className="text-5xl text-white" />
-                          </div>
+                          <ReactPlayer
+                        url={course.url}
+                        playing={hoveredCourse === course.id} 
+                        // muted={true} // Always muted on hover
+                        width="100%"
+                        height="100%"
+                      />
                         </div>
                         <div className="p-4">
                           <h2 className="text-center font-[Vastago] text-lg">
@@ -263,7 +261,7 @@ function Home() {
 
             {/* Featured Courses */}
             <div className="col-span-4">
-              <h1 className="mb-6 text-xl">Featured courses</h1>
+              <h1 className="mb-6  lg:mt-14 mt-0 text-xl">Featured courses</h1>
               <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
                 {courses.map((course) => (
                   <div key={course.id} className="overflow-hidden rounded-lg">
