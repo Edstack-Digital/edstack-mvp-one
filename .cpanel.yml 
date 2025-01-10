@@ -1,13 +1,7 @@
 ---
 deployment:
   tasks:
-    - export CLONE_DIR=/home/edstackx/repositories/edstack-mvp-one
-    - export DEPLOY_DIR=/home/edstackx/public_html
-    - cd $CLONE_DIR
+    - export DEPLOYPATH=/home/edstackx/public_html/
+    - /bin/cp -R edstack-mvp-one $DEPLOYPATH
     - npm install --production
     - npm run build
-    - rsync -av --delete $CLONE_DIR/build/ $DEPLOY_DIR/
-    ytest
-
-    tetst
-t
