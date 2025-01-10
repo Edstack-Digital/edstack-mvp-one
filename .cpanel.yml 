@@ -1,7 +1,7 @@
----
 deployment:
-  tasks:
-    - export DEPLOYPATH=/home/edstackx/public_html/
-    - /bin/cp -R edstack-mvp-one $DEPLOYPATH
-    - npm install --production
-    - npm run build
+  branches:
+    master:
+      document_root: /home/edstackx/public_html
+      app_type: static
+      build_command: npm install && npm run build
+      start_command: npm run dev
