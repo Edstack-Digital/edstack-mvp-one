@@ -7,3 +7,5 @@ deployment:
     - npm install --production
     - npm run build
     - rsync -av --delete $CLONE_DIR/build/ $DEPLOY_DIR/
+    ytest
+t
