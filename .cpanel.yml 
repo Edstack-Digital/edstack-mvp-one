@@ -4,4 +4,4 @@ deployment:
       document_root: /home/edstackx/public_html
       app_type: static
       build_command: npm install && npm run build
-      start_command: npm run dev
+      start_command: npm run de
