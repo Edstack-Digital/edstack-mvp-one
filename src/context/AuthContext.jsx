@@ -130,7 +130,7 @@ export const useAuth = () => useContext(AuthContext);
 //         headers: { Authorization: `Bearer ${token}` },
 //       });
 //     } catch (error) {
-//       console.warn("Logout request failed, but clearing session locally.");
+//       console.warn("Logout request failed!, but clearing session locally.");
 //     } finally {
 //       setUser(null);
 //       setToken(null);
