@@ -92,7 +92,7 @@ function Auth() {
           </div>
           <Link>
             <p className="mt-2 text-right text-[#91c4e9]">
-              {isSignUp ? "" : "Forgot Password?"}
+              {isSignUp ? "" : "Forgot Password!?"}
             </p>
           </Link>
           <button
