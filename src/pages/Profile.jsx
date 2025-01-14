@@ -134,7 +134,7 @@ function Profile() {
           </div>
           <div>
             <label className="block text-base mb-3 font-medium text-gray-600">
-              Matric Numbe
+              Matric Number
             </label>
             <input
               type="text"
