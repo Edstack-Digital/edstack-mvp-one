@@ -122,7 +122,7 @@ function Profile() {
           </div>
           <div>
             <label className="block text-base mb-3 font-medium text-gray-600">
-              Phone Number
+              Phone Numbe
             </label>
             <input
               type="tel"
