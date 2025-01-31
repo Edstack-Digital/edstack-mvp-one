@@ -166,7 +166,7 @@ function Home() {
     const fetchCourses = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/tutorials/Course/",
+          "http://127.0.0.1:8000/api/tutorials/",
         );
         setCourses(response.data); // Assuming the API returns an array of courses
         setLoading(false);

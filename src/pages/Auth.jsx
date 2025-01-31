@@ -5,13 +5,14 @@ import { useAuth } from "../context/AuthContext";
 function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState(null);
 
-  const { login, signup } = useAuth(); // Include both login and signup methods
+  const { login, signup } = useAuth(); 
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -25,13 +26,13 @@ function Auth() {
 
     try {
       if (isSignUp) {
-        await signup(formData); // Call signup for new users
+        await signup(formData); 
       } else {
-        await login({ email: formData.email, password: formData.password }); // Call login for existing users
+        await login({ email: formData.email, password: formData.password }); 
       }
-      navigate("/profile"); // Redirect to a protected page after success
+      navigate("/profile"); 
     } catch (err) {
-      setError(err.response?.data?.message || "Something went wrong. Please try again.");
+      setError(err.message || "Something went wrong. Please try again.");
     }
   };
 
@@ -57,11 +58,20 @@ function Auth() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {isSignUp && (
             <div>
-              <label className="block text-black">Name</label>
+              <label className="block text-black">First Name</label>
               <input
                 type="text"
-                name="name"
-                value={formData.name}
+                name="first_name"
+                value={formData.first_name}
+                onChange={handleInputChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring"
+                required
+              />
+              <label className="block text-black">Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                value={formData.last_name}
                 onChange={handleInputChange}
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:outline-none focus:ring"
                 required

@@ -1,14 +1,14 @@
-import { useState } from "react";
-import Header from "../components/common/Header";
+import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import Header from "../components/common/Header";
 import Lower from "../components/common/Lower";
 
 function Profile() {
-  const { user } = useAuth(); // Fetch logged-in user details
+  const { user } = useAuth(); 
   const [formData, setFormData] = useState({
-    firstName: user?.name?.split(" ")[0] || "",
-    lastName: user?.name?.split(" ")[1] || "",
+    firstName: "",
+    lastName: "",
     phone: "",
     matricNumber: "",
     university: "",
@@ -16,14 +16,26 @@ function Profile() {
     level: "",
   });
 
-  const [avatar, setAvatar] = useState(null); 
+  const [avatar, setAvatar] = useState(null);
 
-  
+  useEffect(() => {
+    if (user) {
+      setFormData({
+        firstName: user?.name?.split(" ")[0] || "",
+        lastName: user?.name?.split(" ")[1] || "",
+        phone: user?.phone || "",
+        matricNumber: user?.matricNumber || "",
+        university: user?.university || "",
+        department: user?.department || "",
+        level: user?.level || "",
+      });
+    }
+  }, [user]); // Update formData when user changes
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
 
   const handleAvatarUpload = (e) => {
     const file = e.target.files[0];
@@ -31,7 +43,6 @@ function Profile() {
       setAvatar(URL.createObjectURL(file));
     }
   };
-
 
   const handleAvatarDelete = () => {
     setAvatar(null);
@@ -42,13 +53,9 @@ function Profile() {
       <div className="flex min-h-screen items-center justify-center flex-col">
         <h1 className="text-2xl font-bold">No user logged in.</h1>
         <div className="mt-11">
-
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4">
-          <Link to="/signin">
-          Sign In or Sign Up
-          </Link>
-        </button>
-        
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4">
+            <Link to="/signin">Sign In or Sign Up</Link>
+          </button>
         </div>
       </div>
     );
@@ -57,22 +64,23 @@ function Profile() {
   return (
     <>
       <Header />
-      <div className="p-11 font-[Satoshi] dark:bg-black  bg-gray-100">
-        <div className="mb-16   flex flex-col justify-center items-center">
-          
-          <div className="flex flex-col  items-center">
+      <div className="p-11 font-[Satoshi] dark:bg-black bg-gray-100">
+        <div className="mb-16 flex flex-col justify-center items-center">
+          <div className="flex flex-col items-center">
             <div className="flex h-24 w-24 items-center mb-8 justify-center rounded-full bg-blue-600 text-2xl font-bold text-white">
               {avatar ? (
                 <img
                   src={avatar}
                   alt="User Avatar"
-                  className="h-24 w-24  rounded-full object-cover"
+                  className="h-24 w-24 rounded-full object-cover"
                 />
               ) : (
-                `${user.name.split(" ")[0][0]}${user.name.split(" ")[1][0]}`
+                user?.name
+                  ? `${user.name.split(" ")[0][0]}${user.name.split(" ")[1][0]}`
+                  : "?"
               )}
             </div>
-            
+
             <div className="mt-2 flex space-x-4">
               <label className="cursor-pointer rounded bg-blue-500 px-4 py-2 text-white">
                 Change Picture
@@ -117,19 +125,19 @@ function Profile() {
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
             <label className="block text-base mb-3 font-medium text-gray-600">
-              Phone Numbe
+              Phone Number
             </label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -141,7 +149,7 @@ function Profile() {
               name="matricNumber"
               value={formData.matricNumber}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -153,7 +161,7 @@ function Profile() {
               name="university"
               value={formData.university}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -165,7 +173,7 @@ function Profile() {
               name="department"
               value={formData.department}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
           <div>
@@ -177,16 +185,16 @@ function Profile() {
               name="level"
               value={formData.level}
               onChange={handleInputChange}
-              className="w-full rounded-lg border dark:bg-black  dark:text-white border-gray-300 p-3"
+              className="w-full rounded-lg border dark:bg-black dark:text-white border-gray-300 p-3"
             />
           </div>
         </form>
-          <button
-            type="button"
-            className="col-span-2 mt-4 w-full lg:mb-0 mb-14 rounded bg-blue-500 px-4 py-2 text-white"
-          >
-            Save Changes
-          </button>
+        <button
+          type="button"
+          className="col-span-2 mt-4 w-full lg:mb-0 mb-14 rounded bg-blue-500 px-4 py-2 text-white"
+        >
+          Save Changes
+        </button>
       </div>
       <Lower />
     </>
