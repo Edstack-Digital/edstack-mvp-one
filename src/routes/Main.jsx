@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Tutor from "../pages/Tutor";
 import Mock from "../pages/Mock";
@@ -13,24 +13,20 @@ import { CourseProvider } from "../context/CourseContext";
 function Main() {
   return (
     <div className="bg-white dark:bg-black">
-    <AuthProvider>
-       <CourseProvider>
-
-
-    <Router>
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/tutor" element={<Tutor />} />
-        <Route path="/mock" element={<Mock />} />
-        <Route path="/community" element={<Community />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/signin" element={<Auth/>} />
-        <Route path="/profile" element={<Profile/>} />
-        <Route path="/course/:id" element={<CoursePage />} />
-      </Routes>
-    </Router>
-       </CourseProvider>
-    </AuthProvider>
+      <AuthProvider>
+        <CourseProvider>
+          <Routes>
+            <Route index element={<Home />} />
+            <Route path="/tutor" element={<Tutor />} />
+            <Route path="/mock" element={<Mock />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/signin" element={<Auth />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/course/:id" element={<CoursePage />} />
+          </Routes>
+        </CourseProvider>
+      </AuthProvider>
     </div>
   );
 }

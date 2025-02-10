@@ -165,20 +165,19 @@ function Home() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get(
-          "http://127.0.0.1:8000/api/tutorials/Video/",
-        );
-        setCourses(response.data); // Assuming the API returns an array of courses
+        const response = await axios.get("https://api.edstack.xyz/tutorials/video/");
+        console.log("API Response:", response.data); // Debugging
+        setCourses(response.data);
         setLoading(false);
       } catch (err) {
         console.error("Error fetching courses:", err);
-        setError("Failed to load courses. Please try again later.");
+        setError("Failed to load courses. Please try again later!");
         setLoading(false);
       }
     };
-
     fetchCourses();
   }, []);
+  
 
   const handleCourseClick = (id) => {
     navigate(`/course/${id}`);
@@ -187,7 +186,7 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="min-h-screen mt-11 overflow-hidden -mb-0 lg:-mb-20 gap-10 bg-white px-7 font-[Satoshi] text-black dark:bg-black dark:text-white lg:px-16">
+      <div className="min-h-screen mt-11 overflow-hidden -mb-0 lg:-mb-0 gap-10 bg-white px-7 font-[Satoshi] text-black dark:bg-black dark:text-white lg:px-16">
         {loading && <p>Loading courses...</p>}
         {error && <p className="text-red-500">{error}</p>}
 
