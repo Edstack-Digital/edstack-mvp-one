@@ -52,6 +52,7 @@ function CoursePage() {
       <Header />
       <div className="px-7 py-10 lg:px-16">
         {/* Progress Bar */}
+        
         <div className="mb-6">
           <p className="text-sm text-gray-500">Course progress: 62%</p>
           <div className="h-2 w-full bg-gray-200 mt-3 rounded-lg">
