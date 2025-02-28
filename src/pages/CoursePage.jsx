@@ -21,7 +21,8 @@ function CoursePage() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const response = await fetch(`https://edstack-api.onrender.com/tutorials/video/${id}`);
+        // const response = await fetch(`https://edstack-api.onrender.com/tutorials/video/${id}`);
+        const response = await fetch(`https://api.edstack.xyz/tutorials/video/${id}`);
         if (!response.ok) {
           throw new Error("Course not found");
         }

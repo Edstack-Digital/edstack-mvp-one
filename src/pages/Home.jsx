@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import axios from "axios";
 import ReactPlayer from "react-player";
+import { API_URL } from "../api/api";
 
 function Home() {
   const navigate = useNavigate();
@@ -28,18 +29,17 @@ function Home() {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         };
-  
-
-          const response = await axios.get("https://edstack-api.onrender.com/tutorials/video/", {
+        // const response = await axios.get(`${API_URL}/tutorials/video/`, {
+          const response = await axios.get("https://api.edstack.xyz/tutorials/video/", {
 
           headers: headers
-        });
-        
+        }) 
+        console.log("response is", response)
         // console.log("API Response:", response.data); 
         setCourses(response.data);
         setLoading(false);
       } catch (err) {
-        // console.error("Error fetching courses:", err);
+        console.error("Error fetching courses:", err);
         setError("Failed to load courses. Please try again later!");
         setLoading(false);
       }

@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const API_URL = "https://edstack-api.onrender.com/api/auth/";
+// const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://api.edstack.xyz/api/auth/";
 // const API_URL = "https://69fe-102-89-46-216.ngrok-free.app"
 
 const api = axios.create({
@@ -17,4 +17,4 @@ const setAuthToken = (token) => {
   }
 };
 
-export { api, setAuthToken };
+export { api, setAuthToken, API_URL };

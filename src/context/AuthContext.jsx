@@ -25,7 +25,9 @@ export function AuthProvider({ children }) {
   // Login function
   const login = async (credentials) => {
     try {
-      const response = await fetch("https://edstack-api.onrender.com/auth/login/", {
+      // const response = await fetch("https://edstack-api.onrender.com/auth/login/", {
+      const response = await fetch("https://api.edstack.xyz/auth/login/", {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(credentials),
@@ -48,7 +50,9 @@ export function AuthProvider({ children }) {
   // Signup function
 const signup = async (userData) => {
   try {
-    const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
+    console.log("api url in signup is", API_URL)
+    // const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
+    const response = await fetch("https://api.edstack.xyz/auth/signup/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
