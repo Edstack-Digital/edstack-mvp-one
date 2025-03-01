@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import axios from "axios";
 import ReactPlayer from "react-player";
+import { API_URL } from "../api/api";
 
 function Home() {
   const navigate = useNavigate();
@@ -18,6 +19,10 @@ function Home() {
   const [error, setError] = useState(null);
   const [hoveredCourse, setHoveredCourse] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [count, setCount] = useState(0);
+  const pageSize = 10;
 
   
   useEffect(() => {
@@ -28,26 +33,54 @@ function Home() {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
         };
-  
-
-          const response = await axios.get("https://edstack-api.onrender.com/tutorials/video/", {
+        // const response = await axios.get(`${API_URL}/tutorials/video/`, {
+          const response = await axios.get(`https://api.edstack.xyz/tutorials/video/?page=${currentPage}`, {
 
           headers: headers
-        });
-        
+        }) 
+        console.log("response is", response)
+        console.log("current page is", currentPage)
         // console.log("API Response:", response.data); 
-        setCourses(response.data);
-        setLoading(false);
+        setCourses(response.data.results);
+        setCount(response.data.count);
+        setTotalPages(Math.ceil(response.data.count / pageSize));
+        setError(null);
       } catch (err) {
-        // console.error("Error fetching courses:", err);
+        console.error("Error fetching courses:", err);
         setError("Failed to load courses. Please try again later!");
+        setLoading(false);
+      } finally {
         setLoading(false);
       }
     };
     fetchCourses();
-  }, []);
+  }, [currentPage]);
 
 
+  const PaginationControls = () => (
+    <div className="flex justify-center items-center gap-4 my-8">
+      <button
+        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+        disabled={currentPage === 1 || loading}
+      >
+        Previous
+      </button>
+      
+      <span className="text-sm">
+        Page {currentPage} of {totalPages}
+      </span>
+
+      <button
+        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        onClick={() => setCurrentPage(prev => prev + 1)}
+        disabled={currentPage === totalPages || loading}
+      >
+
+        Next
+      </button>
+    </div>
+  );
 
 
   const handleCourseClick = (id) => {
@@ -151,8 +184,10 @@ function Home() {
                       </h2>
                     </div>
                   </div>
+                  
                 ))}
               </div>
+              <PaginationControls/>
             </div>
           </>
         )}
