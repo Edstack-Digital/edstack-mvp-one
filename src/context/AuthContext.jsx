@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "./AuthContext.css";
 const AuthContext = createContext();
+import { API_URL } from "../api/api";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -36,7 +37,7 @@ export function AuthProvider({ children }) {
   const login = async (credentials) => {
     try {
       // const response = await fetch("https://edstack-api.onrender.com/auth/login/", {
-      const response = await fetch("https://api.edstack.xyz/auth/login/", {
+      const response = await fetch(`${API_URL}/auth/login/`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -61,7 +62,7 @@ export function AuthProvider({ children }) {
 const signup = async (userData) => {
   try {
     // const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
-    const response = await fetch("https://api.edstack.xyz/auth/signup/", {
+    const response = await fetch(`${API_URL}/auth/signup/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
@@ -70,14 +71,10 @@ const signup = async (userData) => {
     const data = await response.json();
     
     if (response.ok) {
-      console.log("Signup Successful:", data);
-
+      storeTokens(data.access, data.refresh);
       navigate("/signin"); // Redirect user to login page after signup
     } else {
-      // setError(data.message || "Signup failed");
-      console.log("the error is below")
-      console.log(data)
-  
+      // setError(data.message || "Signup failed");  
       const errorMsg = data 
       ? Object.values(data)
             .flat() 

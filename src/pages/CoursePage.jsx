@@ -4,6 +4,7 @@ import { FiPlayCircle } from "react-icons/fi";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { API_URL } from "../api/api";
 
 function CoursePage() {
   const [comments, setComments] = useState([
@@ -22,7 +23,7 @@ function CoursePage() {
     const fetchCourse = async () => {
       try {
         // const response = await fetch(`https://edstack-api.onrender.com/tutorials/video/${id}`);
-        const response = await fetch(`https://api.edstack.xyz/tutorials/video/${id}`);
+        const response = await fetch(`${API_URL}/tutorials/video/${id}`);
         if (!response.ok) {
           throw new Error("Course not found");
         }
