@@ -48,28 +48,28 @@ export function AuthProvider({ children }) {
 
   // Signup function
   // Signup function
-const signup = async (userData) => {
-  try {
-    console.log("api url in signup is", API_URL)
-    // const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
-    const response = await fetch("https://api.edstack.xyz/auth/signup/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userData),
-    });
+  const signup = async (userData) => {
+    try {
 
-    const data = await response.json();
-    
-    if (response.ok) {
-      console.log("Signup Successful:", data);
-      navigate("/signin"); // Redirect user to login page after signup
-    } else {
-      throw new Error(data.message || "Signup failed");
+  
+      const response = await fetch("https://api.edstack.xyz/auth/signup/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+  
+      const data = await response.json();
+      
+      if (response.ok) {
+        console.log("Signup Successful:", data);
+        navigate("/signin");
+      } else {
+        throw new Error(data.message || "Signup failed");
+      }
+    } catch (error) {
+      console.error("Signup Error:", error);
     }
-  } catch (error) {
-    console.error("Signup Error:", error);
-  }
-};
+  };
 
 
   // Logout function
