@@ -13,7 +13,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, logout} = useAuth();
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,6 +25,11 @@ function Header() {
     } else {
       navigate("/signin");
     }
+  };
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/"); // Optional: if not already handled in AuthContext
   };
 
   const getInitials = (name) => {
@@ -106,7 +111,7 @@ function Header() {
                   `${user?.name?.split(" ")[0][0] ?? ""}${user?.name?.split(" ")[1]?.[0] ?? ""}`
                 )}
               </div>
-              <p className="font-semibold">{user?.name ?? "No User"}</p>
+              <p className="font-semibold">{user?.first_name ?? "No User"}</p>
             </div>
 
             <div className="w-full border-t border-gray-300"></div>
@@ -146,7 +151,7 @@ function Header() {
             <Link to="/" className="block rounded-lg py-2">
               <div className="flex items-center justify-center gap-2 text-red-500">
                 <MdLogout />
-                <span>Log out</span>
+                <span onClick={handleLogout}>Log out</span>
               </div>
             </Link>
             </div>
@@ -207,7 +212,7 @@ function Header() {
               <Link to="/" className="block rounded-lg py-2">
                 <div className="flex items-center justify-center gap-2 text-red-500">
                   <MdLogout />
-                  <span>Log out</span>
+                  <span onClick={handleLogout}>Log out</span>
                 </div>
               </Link>
             </div>

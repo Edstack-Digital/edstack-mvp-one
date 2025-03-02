@@ -2,12 +2,23 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
+import "./AuthContext.css";
 const AuthContext = createContext();
+import { API_URL } from "../api/api";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   // Helper function to store tokens and decode user
   const storeTokens = (accessToken, refreshToken) => {
@@ -26,7 +37,7 @@ export function AuthProvider({ children }) {
   const login = async (credentials) => {
     try {
       // const response = await fetch("https://edstack-api.onrender.com/auth/login/", {
-      const response = await fetch("https://api.edstack.xyz/auth/login/", {
+      const response = await fetch(`${API_URL}/auth/login/`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,28 +59,28 @@ export function AuthProvider({ children }) {
 
   // Signup function
   // Signup function
-  const signup = async (userData) => {
-    try {
+const signup = async (userData) => {
+  try {
+    console.log("api url in signup is", API_URL)
+    // const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
+    const response = await fetch("https://api.edstack.xyz/auth/signup/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
 
-  
-      const response = await fetch("https://api.edstack.xyz/auth/signup/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(userData),
-      });
-  
-      const data = await response.json();
-      
-      if (response.ok) {
-        console.log("Signup Successful:", data);
-        navigate("/signin");
-      } else {
-        throw new Error(data.message || "Signup failed");
-      }
-    } catch (error) {
-      console.error("Signup Error:", error);
+    const data = await response.json();
+    
+    if (response.ok) {
+      console.log("Signup Successful:", data);
+      navigate("/signin"); // Redirect user to login page after signup
+    } else {
+      throw new Error(data.message || "Signup failed");
     }
-  };
+  } catch (error) {
+    console.error("Signup Error:", error);
+  }
+};
 
 
   // Logout function

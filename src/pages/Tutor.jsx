@@ -198,6 +198,7 @@ import { Rating } from "flowbite-react";
 import Header from "../components/common/Header";
 import Lower from "../components/common/Lower";
 import { FiCopy } from "react-icons/fi";
+import { API_URL } from "../api/api";
 
 function Tutor() {
   const [showDialog, setShowDialog] = useState(false);
@@ -206,7 +207,7 @@ function Tutor() {
   const [tutors, setTutors] = useState([]); 
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/tutormarketplace/")
+    fetch(`${API_URL}/tutormarketplace/`)
       .then((response) => response.json())
       .then((data) => setTutors(data))
       .catch((error) => console.error("Error fetching tutors:", error));

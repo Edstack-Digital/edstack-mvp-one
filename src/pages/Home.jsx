@@ -34,13 +34,10 @@ function Home() {
           'Content-Type': 'application/json'
         };
         // const response = await axios.get(`${API_URL}/tutorials/video/`, {
-          const response = await axios.get(`https://api.edstack.xyz/tutorials/video/?page=${currentPage}`, {
+          const response = await axios.get(`${API_URL}/tutorials/video/?page=${currentPage}`, {
 
           headers: headers
         }) 
-        console.log("response is", response)
-        console.log("current page is", currentPage)
-        // console.log("API Response:", response.data); 
         setCourses(response.data.results);
         setCount(response.data.count);
         setTotalPages(Math.ceil(response.data.count / pageSize));

@@ -12,12 +12,11 @@ function Auth() {
   });
   const [error, setError] = useState(null);
 
-  const { login, signup } = useAuth();
+  const { login, signup, user} = useAuth();
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Updating ${name}:`, value); 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -25,15 +24,15 @@ function Auth() {
     e.preventDefault();
     setError(null);
     
-    console.log("Form submitted with:", formData); 
     
     try {
       if (isSignUp) {
         await signup(formData);
+        navigate("/profile");
       } else {
         await login({ email: formData.email, password: formData.password });
       }
-      navigate("/profile");
+      navigate("/");
     } catch (err) {
       console.error("Auth Error:", err.message);
       setError(err.message || "Something went wrong. Please try again.");
