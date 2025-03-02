@@ -104,7 +104,7 @@ function Profile() {
         level: formData.level,
       };
 
-      const response = await fetch("http://127.0.0.1:8000/auth/update-profile/", {
+      const response = await fetch(`${API_URL}/auth/update-profile/`, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
