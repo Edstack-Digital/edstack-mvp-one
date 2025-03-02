@@ -2,12 +2,22 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-
+import "./AuthContext.css";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => {
+        setError(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   // Helper function to store tokens and decode user
   const storeTokens = (accessToken, refreshToken) => {
@@ -50,7 +60,6 @@ export function AuthProvider({ children }) {
   // Signup function
 const signup = async (userData) => {
   try {
-    console.log("api url in signup is", API_URL)
     // const response = await fetch("https://edstack-api.onrender.com/auth/signup/", {
     const response = await fetch("https://api.edstack.xyz/auth/signup/", {
       method: "POST",
@@ -62,8 +71,20 @@ const signup = async (userData) => {
     
     if (response.ok) {
       console.log("Signup Successful:", data);
+
       navigate("/signin"); // Redirect user to login page after signup
     } else {
+      // setError(data.message || "Signup failed");
+      console.log("the error is below")
+      console.log(data)
+  
+      const errorMsg = data 
+      ? Object.values(data)
+            .flat() 
+            .join("\n") // Join with newlines
+      : data.message || "Signup failed. Please try again.";
+    
+      alert(errorMsg);
       throw new Error(data.message || "Signup failed");
     }
   } catch (error) {
